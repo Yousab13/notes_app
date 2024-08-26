@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:note_time_project/widgets/note_item_widget.dart';
 import 'package:note_time_project/widgets/search_icon_widget.dart';
 
 class NoteWidget extends StatelessWidget {
   const NoteWidget({super.key});
-
   @override
   Widget build(BuildContext context) {
     return const  Padding(
@@ -12,7 +12,7 @@ class NoteWidget extends StatelessWidget {
       ),
       child:  Column(
         children:[ 
-          SizedBox(height: 20,),
+          SizedBox(height: 30,),
           Row(
             children: [
               Text('Notes',
@@ -20,10 +20,10 @@ class NoteWidget extends StatelessWidget {
                 fontSize: 28 ,
                 color: Colors.white ),),
                 Spacer(),
-                SearchIconWiget()
-      
+                SearchIconWiget(),
             ],
-          )
+          ),
+          NoteItemWidget()
         ],
       ),
     );
