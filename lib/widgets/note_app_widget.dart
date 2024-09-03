@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:note_time_project/widgets/custom_appbar.dart';
 import 'package:note_time_project/widgets/list_view_note_widget.dart';
-import 'package:note_time_project/widgets/search_icon_widget.dart';
-
 class NoteWidget extends StatelessWidget {
   const NoteWidget({super.key});
   @override
@@ -13,15 +12,9 @@ class NoteWidget extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          Row(
-            children: [
-              Text(
-                'Notes',
-                style: TextStyle(fontSize: 28, color: Colors.white),
-              ),
-              Spacer(),
-              SearchIconWiget(),
-            ],
+          CustomAppbar(
+            title: 'Notes',
+            icon: Icons.search,
           ),
           Expanded(child: NoteListViewWidget())
         ],
@@ -29,3 +22,4 @@ class NoteWidget extends StatelessWidget {
     );
   }
 }
+
