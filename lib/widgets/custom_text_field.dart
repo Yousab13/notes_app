@@ -4,7 +4,10 @@ import 'package:note_time_project/constants.dart';
 class CustomTextField extends StatelessWidget {
   final int maxlines ;
   final String hintline;
-  const CustomTextField({super.key,  required this.maxlines, required this.hintline});
+  final void Function(String?)? onSaved;
+ 
+  
+  const CustomTextField({super.key,  required this.maxlines, required this.hintline, this.onSaved});
    OutlineInputBorder outLineBorder(Color color) {
     return OutlineInputBorder(
             borderSide: BorderSide(
@@ -15,7 +18,17 @@ class CustomTextField extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      onSaved: onSaved,
+      validator: (value){
+          if(value!.isEmpty)
+          {
+          return 'this Field is Empty';
+          }
+          else{
+            return null;
+          }
+      },
           cursorColor: kPrimeryColor,
           maxLines: maxlines,
           decoration: InputDecoration(

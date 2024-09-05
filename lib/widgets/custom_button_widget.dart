@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:note_time_project/constants.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key});
+  final void Function()? onTap;
+  const  CustomButton({super.key,  required this.onTap} );
   @override
   Widget build(BuildContext context) {
     return  GestureDetector(
-      onTap: (){},
+      onTap: onTap,
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: 55,
