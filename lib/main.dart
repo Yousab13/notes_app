@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:note_time_project/constants.dart';
 import 'package:note_time_project/cubits/add_note_cubit/cubit/add_note_cubit_cubit.dart';
+
 import 'package:note_time_project/models/note_model.dart';
 import 'package:note_time_project/views/notes_view.dart';
 
