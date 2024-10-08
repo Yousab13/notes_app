@@ -3,7 +3,8 @@ import 'package:note_time_project/constants.dart';
 
 class CustomButton extends StatelessWidget {
   final void Function()? onTap;
-  const  CustomButton({super.key,  required this.onTap} );
+  final bool isloaded ;
+  const  CustomButton({super.key,  required this.onTap , this.isloaded =false} );
   @override
   Widget build(BuildContext context) {
     return  GestureDetector(
@@ -15,8 +16,14 @@ class CustomButton extends StatelessWidget {
           color: kPrimeryColor,
           borderRadius: BorderRadius.circular(20)
         ),
-        child:const Center(
-          child: Text('Add' ,
+        child:Center(
+          child:isloaded==true?const SizedBox(
+            height: 20,
+            width: 20,
+            child:  CircularProgressIndicator(
+                color:Colors.black ,
+              ),
+          ) :const Text('Add' ,
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold

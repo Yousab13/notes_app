@@ -4,7 +4,7 @@ import 'package:note_time_project/cubits/add_note_cubit/cubit/add_note_cubit_cub
 import 'package:note_time_project/models/note_model.dart';
 import 'package:note_time_project/widgets/custom_button_widget.dart';
 import 'package:note_time_project/widgets/custom_text_field.dart';
-
+import 'package:intl/intl.dart';
 class NoteAppForm extends StatefulWidget {
   const NoteAppForm({
     super.key,
@@ -24,7 +24,9 @@ class _NoteAppFormState extends State<NoteAppForm> {
       key: formkey,
       autovalidateMode: autovalidateMode,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0 ),
+        padding:  EdgeInsets.only(right: 16.0 ,left:16
+        ,bottom: MediaQuery.of(context).viewInsets.bottom
+         ),
             child: Column(
               children:[
                 const SizedBox(height: 16,),
@@ -40,17 +42,22 @@ class _NoteAppFormState extends State<NoteAppForm> {
                 {
                  subtitle =value;
                 },),
-               const SizedBox(height:50,),
-               CustomButton(
+               const SizedBox(height:70,),
+                BlocBuilder<AddNoteCubitCubit,AddNoteCubitState>(builder: (context,state)=>
+                 CustomButton(
+                  isloaded: state is AddNoteCubitLoading ?true :false,
                 onTap: (){
                    if(formkey.currentState!.validate())
                    {
                     formkey.currentState!.save();
                      var noteCubit = BlocProvider.of<AddNoteCubitCubit>(context);
+                     
                      noteCubit.addNote(NoteModel(title: title!,
                       subtitle: subtitle!, 
-                      date: DateTime.now().toString(), 
-                      color: 44));
+                      date: DateFormat('MMMM d, y').format(  DateTime.now())
+                    , 
+                      color: Colors.blue.value
+                      ));
                    }
                    else{
                 
@@ -61,6 +68,7 @@ class _NoteAppFormState extends State<NoteAppForm> {
                    }
                 },
                ),
+                ),
                const SizedBox(height:32,),
               ],
             ),
