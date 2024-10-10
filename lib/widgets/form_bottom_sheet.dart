@@ -6,6 +6,7 @@ import 'package:note_time_project/models/note_model.dart';
 import 'package:note_time_project/widgets/custom_button_widget.dart';
 import 'package:note_time_project/widgets/custom_text_field.dart';
 import 'package:intl/intl.dart';
+import 'package:note_time_project/widgets/list_pick_color.dart';
 class NoteAppForm extends StatefulWidget {
   const NoteAppForm({
     super.key,
@@ -43,7 +44,9 @@ class _NoteAppFormState extends State<NoteAppForm> {
                 {
                  subtitle =value;
                 },),
-               const SizedBox(height:70,),
+                const SizedBox(height:10,),
+                 const  ListPickColor() ,
+                 const SizedBox(height:10,),
                 BlocBuilder<AddNoteCubitCubit,AddNoteCubitState>(builder: (context,state)=>
                  CustomButton(
                   isloaded: state is AddNoteCubitLoading ?true :false,
@@ -56,7 +59,7 @@ class _NoteAppFormState extends State<NoteAppForm> {
                       subtitle: subtitle!, 
                       date: DateFormat('MMMM d, y').format(  DateTime.now())
                     , 
-                      color: Colors.blue.value
+                      color: BlocProvider.of<AddNoteCubitCubit>(context).color.value
                       ));
                       BlocProvider.of<NoteCubit>(context).fetchAllNote();
                    }
@@ -70,7 +73,7 @@ class _NoteAppFormState extends State<NoteAppForm> {
                 },
                ),
                 ),
-               const SizedBox(height:32,),
+               const SizedBox(height:20,),
               ],
             ),
       ),
