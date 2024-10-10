@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:note_time_project/constants.dart';
 
+// ignore: must_be_immutable
 class CustomTextField extends StatelessWidget {
   final int maxlines ;
   final String hintline;
   final void Function(String?)? onSaved;
- 
+  final Function(String)? onChanged;
   
-  const CustomTextField({super.key,  required this.maxlines, required this.hintline, this.onSaved});
+ const  CustomTextField({super.key,  required this.maxlines, required this.hintline, this.onSaved ,this.onChanged});
    OutlineInputBorder outLineBorder(Color color) {
     return OutlineInputBorder(
             borderSide: BorderSide(
@@ -19,6 +20,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
       onSaved: onSaved,
       validator: (value){
           if(value!.isEmpty)

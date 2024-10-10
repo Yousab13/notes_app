@@ -4,3 +4,5 @@ part of 'note_cubit_cubit.dart';
 sealed class NoteState {}
 
 final class NoteInitial extends NoteState {}
+final class NoteSucess extends NoteState{
+}

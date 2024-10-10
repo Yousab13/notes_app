@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:note_time_project/cubits/cubit/note_cubit_cubit.dart';
 import 'package:note_time_project/models/note_model.dart';
 import 'package:note_time_project/views/edit_view.dart';
 
 class NoteItemWidget extends StatelessWidget {
   final NoteModel note ;
-
+  
   const NoteItemWidget({super.key, required this.note});
 
   @override
@@ -13,7 +15,9 @@ class NoteItemWidget extends StatelessWidget {
     return GestureDetector(
       onTap: (){
         Navigator.push(context, 
-          MaterialPageRoute(builder: (context)=>const EditView())
+          MaterialPageRoute(builder: (context)=>EditView(
+            note: note,
+          ))
         );
       },
       child: Container(
@@ -32,8 +36,10 @@ class NoteItemWidget extends StatelessWidget {
                   note.title ,style: const TextStyle(
                     color: Colors.black,
                     fontSize: 26,
-                  ) ,
                   
+                  ) ,
+                  maxLines: 1 ,
+                  overflow: TextOverflow.ellipsis,
                   ),
               ),
                 subtitle: Padding(
@@ -46,13 +52,14 @@ class NoteItemWidget extends StatelessWidget {
                     fontSize: 16,
                   
                   ) ,
-                  maxLines: 2,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   ),
                 )
                 ,
                 trailing: IconButton(onPressed: (){
                   note.delete();
+                  BlocProvider.of<NoteCubit>(context).fetchAllNote();
                 }, icon: const Icon(FontAwesomeIcons.trash) ,
                 color:Colors.black
               ),
