@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_time_project/constants.dart';
 import 'package:note_time_project/cubits/add_note_cubit/cubit/add_note_cubit_cubit.dart';
 // ignore: must_be_immutable
 class ColorPickerItem extends StatelessWidget {
@@ -30,17 +31,7 @@ class ListPickColor extends StatefulWidget {
 }
 
 class _ListPickColorState extends State<ListPickColor> {
-  List<Color> colors = const[
-    Color(0xffD9FFF8),
-    Color(0xff9BB291),
-    Color(0xffEEE1F0),
-    Color(0xff8ecae6),
-    Color(0xffffb703),
-    Color(0xfffb8500),
-    Color(0xffc1121f),
-    Color(0xff03045e),
-    Color(0xff62b6cb),
-  ];
+  
   int currentIndex=0;
   @override
   Widget build(BuildContext context) {
@@ -51,14 +42,14 @@ class _ListPickColorState extends State<ListPickColor> {
           itemBuilder: (context ,index)=> GestureDetector(
             onTap:(){
               currentIndex=index;
-              BlocProvider.of<AddNoteCubitCubit>(context).color =colors[index];
+              BlocProvider.of<AddNoteCubitCubit>(context).color =kcolors[index];
               setState((){});
             } ,
-            child: ColorPickerItem(color:colors[index],
+            child: ColorPickerItem(color:kcolors[index],
             isActive: currentIndex==index ?true :false,
             ),
           ),
-          itemCount:colors.length,
+          itemCount:kcolors.length,
           separatorBuilder: (context,index)=> const SizedBox(width: 10 ,),
         ),
     );

@@ -4,6 +4,7 @@ import 'package:note_time_project/cubits/cubit/note_cubit_cubit.dart';
 import 'package:note_time_project/models/note_model.dart';
 import 'package:note_time_project/widgets/custom_appbar.dart';
 import 'package:note_time_project/widgets/custom_text_field.dart';
+import 'package:note_time_project/widgets/edit_list_pick_color.dart';
 
 class EditView extends StatefulWidget {
   final NoteModel note;
@@ -15,6 +16,7 @@ class EditView extends StatefulWidget {
 
 class _EditViewState extends State<EditView> {
   String ?title ,subtitle ;
+  int? color ;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -38,7 +40,9 @@ class _EditViewState extends State<EditView> {
              CustomTextField(maxlines: 5, hintline: widget.note.subtitle,onChanged:(value){
               subtitle=value;
              }),
-      
+            const SizedBox(height:32 ,),
+            EditListPickColor(note: widget.note,),
+            
           ],
         ),
       ),
