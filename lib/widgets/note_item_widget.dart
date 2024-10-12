@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:note_time_project/cubits/cubit/note_cubit_cubit.dart';
+import 'package:note_time_project/cubits/note_cubit/cubit/note_cubit_cubit.dart';
 import 'package:note_time_project/models/note_model.dart';
 import 'package:note_time_project/views/edit_view.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_time_project/cubits/cubit/note_cubit_cubit.dart';
+import 'package:note_time_project/cubits/note_cubit/cubit/note_cubit_cubit.dart';
 import 'package:note_time_project/widgets/custom_appbar.dart';
 import 'package:note_time_project/widgets/list_view_note_widget.dart';
 class NoteWidget extends StatefulWidget {
