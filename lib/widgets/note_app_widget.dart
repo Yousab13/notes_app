@@ -23,7 +23,7 @@ class _NoteWidgetState extends State<NoteWidget> {
       child: Column(
         children: [
           SizedBox(
-            height: 30,
+            height: 50,
           ),
           CustomAppbar(
             title: 'Notes',
